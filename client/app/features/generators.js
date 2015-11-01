@@ -59,6 +59,24 @@ generator.next(2); //2 в логе*/
 
 
 
+function* gen() {
+    try {
+        let log = yield "переданный аргумент";
+        console.log(log + ' в логе');
+    } catch (e) {
+        console.log(e.message);
+    }
+}
+
+let generator = gen();
+
+console.log(generator.next().value); //переданный аргумент
+
+generator.throw(new Error("Ошибочко")); //2 в логе
+
+
+
+
 /*function* gen() {
     let sum = 0;
 
@@ -136,7 +154,7 @@ execute( getJson() );*/
 
 
 
-co(function* () {
+/*co(function* () {
     let jsonFetch = yield fetch('./json.json');
     let jsonResult = yield jsonFetch.json();
 
@@ -157,7 +175,7 @@ co(function* () {
     );
 
     console.log(timeout1);
-});
+});*/
 
 
 

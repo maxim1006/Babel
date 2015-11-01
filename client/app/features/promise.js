@@ -15,7 +15,6 @@ promise.then(
 );*/
 
 
-/*
 let promise = new Promise((resolve, reject) => {
     setTimeout(() => {
         reject(new Error("Ошибка о_О!"));
@@ -52,7 +51,7 @@ promise
     .catch(
         (error) => { console.log(error) }
     );
-*/
+
 
 /*Promise.all([
         fetch("json.json").then(
@@ -69,10 +68,13 @@ promise
                 return val.name;
             }
         ));
-    });*/
+    })
+     .catch(
+        (error) => { console.log(error) }
+     );*/
 
 
-Promise.race([ //только первый resolve
+/*Promise.race([ //только первый resolve
         fetch("json.json").then(
                 response => response.json()
         ),
@@ -82,4 +84,7 @@ Promise.race([ //только первый resolve
     ])
     .then(results => {
         console.log(results);
-    });
+    })
+    .catch(
+        (error) => { console.log(error) }
+    );*/

@@ -1,6 +1,6 @@
 'use strict';
 
-require('babel/polyfill'); //нужно для генераторов
+//require('babel/polyfill'); //нужно для генераторов
 
 //require('./features/let-const');
 //require('./features/destructuring');
@@ -10,8 +10,9 @@ require('babel/polyfill'); //нужно для генераторов
 //require('./features/class');
 //require('./features/iterator');
 //require('./features/promise');
-require('./features/generators');
+//require('./features/generators');
 
+require('./features/modules/import');
 
 
 
