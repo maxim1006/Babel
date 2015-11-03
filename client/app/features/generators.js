@@ -158,6 +158,8 @@ execute( getJson() );*/
 
 /*co(function* () {
     let jsonFetch = yield fetch('./json.json');
+    console.log(jsonFetch);
+
     let jsonResult = yield jsonFetch.json();
 
     console.log(jsonResult);
@@ -180,19 +182,47 @@ execute( getJson() );*/
 });*/
 
 
-//пример с co и вложенным генератором
+//пример с co и вложенным генератором, заметим, что все внутренние yield функций выполнились
+/*
 co(function* () {
     let sum = yield* getSum();
     console.log(sum);
-});
+})
+.catch((err) => console.log(err.stack));
 
 function* getSum() {
     let sum = yield new Promise((resolve) => {
         setTimeout(() => resolve('сумма 2000'), 1000);
     });
 
-    return sum;
-}
+    let sumAll = yield Promise.resolve(sum + 2000);
 
+    return sumAll;
+}
+*/
+
+
+co(function* () {
+
+    let name1 = yield* getName('./json.json');
+    let name2 = yield* getName('./json1.json');
+
+    console.log(name1.name);
+    console.log(name2.name);
+
+});
+
+function* getName(url) {
+    let name = yield new Promise((resove, reject) => {
+        fetch(url)
+            .then((response) => response.json())
+            .then(response => resove(response))
+            .catch(function(ex) {
+                console.log('parsing failed', ex)
+            })
+    });
+
+    return name;
+}
 
 
