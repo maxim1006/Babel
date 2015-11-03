@@ -1,3 +1,5 @@
+"use strict";
+
 let co = require('co');
 
 /*let generator = (function* generatorSequence() {
@@ -59,7 +61,7 @@ generator.next(2); //2 в логе*/
 
 
 
-function* gen() {
+/*function* gen() {
     try {
         let log = yield "переданный аргумент";
         console.log(log + ' в логе');
@@ -72,7 +74,7 @@ let generator = gen();
 
 console.log(generator.next().value); //переданный аргумент
 
-generator.throw(new Error("Ошибочко")); //2 в логе
+generator.throw(new Error("Ошибочко")); //2 в логе*/
 
 
 
@@ -177,6 +179,20 @@ execute( getJson() );*/
     console.log(timeout1);
 });*/
 
+
+//пример с co и вложенным генератором
+co(function* () {
+    let sum = yield* getSum();
+    console.log(sum);
+});
+
+function* getSum() {
+    let sum = yield new Promise((resolve) => {
+        setTimeout(() => resolve('сумма 2000'), 1000);
+    });
+
+    return sum;
+}
 
 
 
