@@ -113,10 +113,10 @@ console.log(generator.next());*/
 
 
 
-/*function* getJson() {
-    let jsonFetch = yield fetch('./json.json');
+function* getJson() {
+    /*let jsonFetch = yield fetch('./json.json');
     let jsonResult = yield jsonFetch.json();
-    console.log(jsonResult);
+    console.log(jsonResult);*/
 
     let timeout = yield new Promise(
         (resolve) => {
@@ -136,7 +136,7 @@ console.log(generator.next());*/
 }
 
 function execute(generator, yieldValue) {
-
+    console.log(yieldValue);
     let next = generator.next(yieldValue);
 
     if (!next.done) {
@@ -152,7 +152,7 @@ function execute(generator, yieldValue) {
 
 }
 
-execute( getJson() );*/
+execute( getJson() );
 
 
 
